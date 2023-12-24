@@ -1,15 +1,16 @@
 /* General styles */
 body {
     font-family: 'Roboto', sans-serif;
-    color: #333;
+    color: #555;
     margin: 0;
-    background-color: #f5f5f5;
+    background-color: #f8f8f8;
+    box-sizing: border-box;
 }
 
 /* Header Styles */
 .hero {
     position: relative;
-    background-image: url("images/head\ shot.jpg");
+    background-image: url("head\ shot.jpg");
     background-size: cover;
     background-position: center;
     height: 500px;
@@ -19,7 +20,10 @@ body {
     text-align: center;
     flex-direction: column;
     overflow: hidden;
+    padding-top: 60px; /* Adjust the top padding to create space */
+    margin-top: 20px; /* Add margin to create space between nav and hero */
 }
+
 
 /* Semi-transparent overlay */
 .hero::before {
@@ -29,7 +33,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
     z-index: 0;
 }
 
@@ -44,36 +48,38 @@ body {
 .hero__content h1 {
     font-size: 3rem;
     margin-bottom: 10px;
-    color: #fe2663; /* Initial color (pink) */
+    color: #fe2663;
     position: relative;
     animation: glow 2s infinite alternate;
 }
 
 @keyframes glow {
     from {
-        color: #fe2663; /* Pink */
+        color: #fe2663;
         text-shadow: 0 0 10px rgba(254, 38, 99, 0.8), 0 0 20px rgba(254, 38, 99, 0.8);
         transform: scale(1);
     }
     to {
-        color: #0de8fe; /* Turquoise */
+        color: #0de8fe;
         text-shadow: 0 0 20px rgba(13, 232, 254, 0.8), 0 0 40px rgba(13, 232, 254, 0.8);
         transform: scale(1.3);
     }
 }
 
-
 /* Typewriter Animation */
 .hero__content h2 {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #eee; /* Lighter text color */
-    white-space: nowrap; /* Prevent text from wrapping */
-    overflow: hidden; /* Hide overflowing text */
-    border-right: 2px solid #fff; /* Create the blinking cursor effect */
-    padding-right: 8px; /* Adjust padding for cursor effect */
+    color: #eee;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #fff;
+    padding-right: 8px;
     animation: typewriterAnimation 3s steps(30) infinite;
 }
+
+/* Other styles... */
+
 
 @keyframes typewriterAnimation {
     from {
@@ -107,9 +113,11 @@ body {
 }
 
 .button:hover {
-    background-color: #35a15a;
+    background-color: #095122;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
+
+
 
 /* Skills Section Styles */
 .skills {

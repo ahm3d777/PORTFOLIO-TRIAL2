@@ -1,0 +1,41 @@
+/* Navigation Styles */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 20px; /* Add a top margin to create space */
+    z-index: 1; /* Add z-index property */
+}
+
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Highlight the current section in the navigation */
+nav a.current {
+    color: #fe2663; /* Highlight color */
+}
+
+/* Highlight on hover */
+nav a:hover {
+    color: #0de8fe; /* Hover color */
+}
