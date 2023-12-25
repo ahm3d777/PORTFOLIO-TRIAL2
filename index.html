@@ -9,69 +9,109 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="navbar.css">
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
 </head>
 
 <body>
-   <!-- Navigation Section -->
-   <nav>
-    <ul>
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
+    <div class="overlay" onclick="toggleOverlay()"></div>
+
+    <!-- Navigation Section -->
+    <nav>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
     <!-- Header Section -->
     <header class="hero" id="hero">
         <!-- Your existing header content goes here -->
         <div class="hero__content">
             <h1>KOUSHIK</h1>
-                    <h2 data-content="Web Developer">Web Developer</h2>
+            <h2 data-content="Web Developer">Web Developer</h2>
             <p>Passionate about crafting beautiful and functional web experiences. <br>Seeking opportunities to learn,
                 collaborate, and build.</p>
             <button type="button" class="button">My Skills</button>
         </div>
-    
+
     </header>
 
-    <!-- Skills Section -->
     <section class="skills" id="skills">
-        <!-- Your existing skills section content goes here -->
         <h2>Skills & Proficiencies</h2>
         <ul class="skills__list">
-            <!-- Skills List Items -->
-            <li><span class="skill">HTML5</span> <span class="skill-level">90% Proficient</span></li>
-            <li><span class="skill">CSS3</span> <span class="skill-level">85% Proficient</span></li>
-            <li><span class="skill">JavaScript</span> <span class="skill-level">75% Proficient</span></li>
-            <li><span class="skill">Bootstrap</span> <span class="skill-level">60% Proficient</span></li>
+            <!-- HTML5 Skill -->
+            <li>
+                <div class="skill-icon">
+                    <img src="logo/html-logo.png" alt="HTML5 Logo">
+                </div>
+                <span class="skill-name">HTML5</span>
+                <span class="skill-level">90% Proficient</span>
+            </li>
+    
+            <!-- CSS3 Skill -->
+            <li>
+                <div class="skill-icon">
+                    <img src="logo/css3-logo.png" alt="CSS3 Logo">
+                </div>
+                <span class="skill-name">CSS3</span>
+                <span class="skill-level">85% Proficient</span>
+            </li>
+    
+            <!-- JavaScript Skill -->
+            <li>
+                <div class="skill-icon">
+                    <img src="logo/javascript-logo.png" alt="JavaScript Logo">
+                </div>
+                <span class="skill-name">JavaScript</span>
+                <span class="skill-level">75% Proficient</span>
+            </li>
+    
+            <!-- Bootstrap Skill -->
+            <li>
+                <div class="skill-icon">
+                    <img src="logo/bootstrap-logo.png" alt="Bootstrap Logo">
+                </div>
+                <span class="skill-name">Bootstrap</span>
+                <span class="skill-level">60% Proficient</span>
+            </li>
+    
+            <!-- Add more skills if needed -->
         </ul>
     </section>
 
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <!-- Your existing projects section content goes here -->
-        <h2>Featured Projects</h2>
-        <div class="projects__grid">
-            <!-- Project Items -->
-            <div class="project">
-                <img src="project-1-thumbnail.jpg" alt="Project 1 thumbnail">
-                <h3>Project 1 Title</h3>
-                <p>Brief description of the project and skills used.</p>
-                <a href="project-1-link">View Project</a>
-            </div>
-            <!-- Add more project items if needed -->
-        </div>
-    </section>
 
-    <!-- About Section -->
+   <!-- Projects Section -->
+<section class="projects" id="projects">
+    <!-- Your existing projects section content goes here -->
+    <h2>Featured Projects</h2>
+    <div class="projects__grid">
+        <!-- Project Items -->
+        <div class="project">
+            <div class="project__image-container" onclick="toggleModal()">
+                <img src="images/project-1.jpg" alt="Project 1 thumbnail" class="project__image">
+                <a href="https://convincemydad.liveblog365.com/" class="project__link">View Project</a>
+            </div>
+            <div class="project__details">
+                <h3>Project 1 Title</h3>
+                <p>Just some basic html5 and css used and hosted the site with free hosting.</p>
+            </div>
+        </div>
+        <!-- Add more project items if needed -->
+    </div>
+</section>
+
+<!-- About Section -->
     <section class="about" id="about">
-        <!-- Your existing about section content goes here -->
         <h2>About Me</h2>
-    <div class="about__content">
-        <img src="hero image.jpg" alt="Your headshot" class="about__image">
+        <div class="about__content">
+            <img src="images/hero image.jpg" alt="Your headshot" class="about__image" id="aboutImage">
+
         <p>Compelling paragraph about myself, my journey, and my aspirations. I'm a passionate web developer with a
             knack for creating beautiful and functional user experiences. I'm driven by a constant thirst for
             learning, collaboration, and growth in the tech industry. When I'm not coding, you'll find me exploring
@@ -83,7 +123,9 @@
             bridges between individuals, fostering connection and understanding through thoughtful design.
         </p>
     </div>
-    </section>
+</section>
+
+
 
     <!-- Blog Section -->
     <section class="blog" id="blog">
@@ -94,36 +136,50 @@
             <div class="blog-post">
                 <h3>Blog Post Title</h3>
                 <p>Excerpt from the blog post...</p>
-                <a href="blog-post-link">Read More</a>
+                <a href="your-full-blog-post-url" class="read-more">Read More</a>
+                <div class="metadata">Published on: Date | Author: Your Name | Category: Web Development</div>
             </div>
+            
             <!-- Add more blog post items if needed -->
         </div>
     </section>
+<!-- Contact Section Styles -->
+<section class="contact" id="contact">
+    <h2>Get in Touch</h2>
+    <form action="https://formspree.io/your-email-here" method="POST">
+        <!-- Contact Form -->
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <!-- Your existing contact section content goes here -->
-        <h2>Get in Touch</h2>
-        <form action="https://formspree.io/your-email-here" method="POST">
-            <!-- Contact Form -->
-            <label for="name">Name: KOUSHIK</label>
-            <input type="text" name="name" id="name" required>
-    
-            <label for="email">Email: k.ahm3d777@gmail.com</label>
-            <input type="email" name="email" id="email" required>
-    
-            <label for="message">Message: just feel free</label>
-            <textarea name="message" id="message" required></textarea>
-    
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="message">Message:</label>
+        <textarea name="message" id="message" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+
+    <!-- Contact Information -->
+    <div class="contact-info">
+        <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+        <p>Phone: <a href="tel:+123456789">+123 456 789</a></p>
+    </div>
+</section>
+
+
+    <!-- Back-to-Top Button with Logo -->
+    <button id="back-to-top-btn" onclick="topFunction()">
+        <img src="logo/icon top.png" alt="Logo" class="logo">
+        <span>Top</span>
+    </button>
 
     <!-- Footer Section -->
     <footer>
         <!-- Your existing footer content goes here -->
         <div class="footer__content">
-            <p>&copy; 2023 KOUSHIK | Connect with me on <a href="https://github.com/your-username" target="_blank">GitHub</a></p>
+            <p>&copy; 2023 KOUSHIK | Connect with me on <a href="https://github.com/your-username"
+                    target="_blank">GitHub</a></p>
         </div>
     </footer>
 

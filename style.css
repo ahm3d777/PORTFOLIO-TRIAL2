@@ -6,11 +6,49 @@ body {
     background-color: #f8f8f8;
     box-sizing: border-box;
 }
+/* Apply the glow animation to all section headings */
+h2, h3, h4, h5, h6 {
+    font-size: 2rem; /* Adjust the size as needed */
+    margin: 5px 0; /* Adjust the margin to make it more compact */
+    color: #fe2663;
+    position: relative;
+    display: inline-block; /* Ensure the border only covers the text width */
+}
+
+h2::after, h3::after, h4::after, h5::after, h6::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px; /* Adjust the border height as needed */
+    background-color: #fe2663;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+h2:hover::after, h3:hover::after, h4:hover::after, h5:hover::after, h6:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Adjust the opacity as needed */
+    z-index: 999; /* Place it above other elements */
+    display: none; /* Initially hidden */
+}
+
 
 /* Header Styles */
 .hero {
     position: relative;
-    background-image: url("head\ shot.jpg");
+    background-image: url("images/head\ shot.jpg");
     background-size: cover;
     background-position: center;
     height: 500px;
@@ -118,19 +156,46 @@ body {
 }
 
 
-
+/* Add to your existing CSS styles */
 /* Skills Section Styles */
-.skills {
-    padding: 50px 0;
+.skills__list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .skills__list li {
-    position: relative;
+    text-align: center;
+    margin: 10px;
+    max-width: 150px; /* Adjust the width as needed */
+}
+
+/* Additional styles for the new skills */
+/* Add to your existing CSS styles */
+.skill-icon {
+    width: 50px; /* Adjust the size as needed */
+    height: 50px;
+    fill: #fe2663; /* Adjust the icon color */
+    margin-bottom: 10px;
+}
+
+/* Adjust the following styles based on your preferences */
+.skill-name {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555; /* Adjust the text color */
+}
+
+.skill-level {
+    color: #777; /* Adjust the text color */
 }
 
 /* Projects Section Styles */
-.projects {
-    padding: 50px 0;
+.projects__grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -143,7 +208,62 @@ body {
     overflow: hidden;
 }
 
-.project img {
+.project__image-container {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.project__image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+    filter: brightness(90%) saturate(100%) grayscale(20%);
+}
+
+.project__link {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    text-decoration: none;
+    color: white;
+    background-color: #3eb265;
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+
+.project__image-container:hover .project__image {
+    transform: scale(1.05);
+}
+
+.project__image-container:hover .project__link {
+    opacity: 1;
+}
+
+.project__details {
+    margin-top: 10px;
+}
+
+/* ... Other existing styles ... */
+
+/* About Section Styles */
+.about {
+    padding: 25px; /* Adjust the padding as needed */
+    text-align: center;
+}
+
+.about__content {
+    max-width: 60%;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.about img {
     width: 100%;
     height: auto;
     border-radius: 8px;
@@ -151,22 +271,20 @@ body {
     filter: brightness(90%) saturate(100%) grayscale(20%);
 }
 
-.project:hover img {
+.about:hover img {
     transform: scale(1.05);
 }
 
-/* About Section Styles */
-.about {
-    padding: 50px 0;
-    text-align: center;
+.about p {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #555;
+    text-align: center; /* Adjust the text alignment as needed */
 }
 
-.about__image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    margin: 0 auto 20px;
-}
+
 
 /* Blog Section Styles */
 .blog {
@@ -174,12 +292,116 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    max-width: 80%; /* Adjust the maximum width for a smaller content area */
+    margin: 0 auto;
+}
+.blog-post {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.blog-post img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+.blog-post .read-more {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #3eb265;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.blog-post .read-more:hover {
+    background-color: #095122;
+}
+.blog-post .metadata {
+    color: #777;
+    font-size: 0.9rem;
+}
+@media (max-width: 768px) {
+    .blog-post {
+        width: 100%;
+    }
 }
 
 /* Contact Section Styles */
 .contact {
     padding: 50px 0;
     text-align: center;
+}
+
+/* Form Styles */
+form {
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #3eb265;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: #095122;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Confirmation Message Styles */
+.confirmation-message {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #3eb265;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Contact Information Styles */
+.contact-info {
+    margin-top: 20px;
+}
+
+.contact-info p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.contact-info a {
+    color: #3eb265;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease-in-out;
+}
+
+.contact-info a:hover {
+    color: #095122;
 }
 
 /* Footer Styles */
@@ -204,3 +426,47 @@ footer {
 .footer__content a:hover {
     text-decoration: underline;
 }
+/* Add to your existing CSS styles */
+
+/* Back-to-Top Button Styles */
+#back-to-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3eb265;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 75px; /* Adjust the size of the button */
+}
+
+.logo {
+    width: 15px; /* Adjust the size of your logo */
+    height: auto;
+    margin-right: 5px; /* Adjust the spacing between logo and text */
+}
+
+/* Fixed position for the button */
+@media (max-width: 768px) {
+    #back-to-top-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #3eb265;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        display: none;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        width: 50px; /* Adjust the size of the button */
+    }
+}
+
