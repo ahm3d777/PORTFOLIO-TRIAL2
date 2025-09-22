@@ -1,189 +1,1635 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KOUSHIK - Web Developer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="navbar.css">
-    <script src="script.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>OutdoorPro™ - Premium Camping & Outdoor Equipment</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent-hover: #c13651;
+            --success: #0f9d58;
+            --warning: #f4b400;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --text-primary: #2c3e50;
+            --text-secondary: #6c757d;
+            --border: #e0e0e0;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
 
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        /* Premium Navigation */
+        .navbar {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo:before {
+            content: "⛺";
+            font-size: 1.8rem;
+            -webkit-text-fill-color: initial;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 24px 20px;
+            display: block;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-link.active {
+            color: var(--accent);
+        }
+
+        .nav-link.active:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .basket-badge {
+            background: var(--accent);
+            color: white;
+            border-radius: 12px;
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 73px;
+            min-height: calc(100vh - 73px);
+        }
+
+        .page-section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(10px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 80px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 14px rgba(233, 69, 96, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-sm {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--accent);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.1));
+        }
+
+        .product-content {
+            padding: 24px;
+        }
+
+        .product-category {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .product-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .product-price small {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+
+        /* Package Cards */
+        .packages-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .package-card.featured {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .package-card.featured .package-header {
+            background: var(--gradient);
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .package-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+
+        .package-header {
+            background: var(--primary);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .package-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .package-tagline {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .package-body {
+            padding: 30px;
+        }
+
+        .package-price {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .package-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .package-amount sup {
+            font-size: 1.5rem;
+        }
+
+        .package-savings {
+            color: var(--success);
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        .package-features {
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        .package-features li {
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            color: var(--text-primary);
+        }
+
+        .package-features li:before {
+            content: "✓";
+            width: 24px;
+            height: 24px;
+            background: rgba(15, 157, 88, 0.1);
+            color: var(--success);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Reviews Section */
+        .review-form-container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .rating-input {
+            display: flex;
+            gap: 8px;
+            font-size: 1.5rem;
+        }
+
+        .rating-input label {
+            cursor: pointer;
+            color: #ddd;
+            transition: color 0.2s;
+        }
+
+        .rating-input input {
+            display: none;
+        }
+
+        .rating-input label:hover,
+        .rating-input label.active {
+            color: #ffc107;
+        }
+
+        /* Reviews Display */
+        .reviews-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .review-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .review-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 16px;
+        }
+
+        .review-author-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .review-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .review-author-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .review-author {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .review-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .review-rating {
+            color: #ffc107;
+            font-size: 1.1rem;
+        }
+
+        .review-product {
+            background: var(--light-bg);
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Shopping Cart */
+        .cart-container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .cart-table {
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .cart-table th {
+            text-align: left;
+            padding: 16px;
+            border-bottom: 2px solid var(--border);
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cart-table td {
+            padding: 20px 16px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+
+        .cart-item-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--light-bg);
+            padding: 4px;
+            border-radius: 8px;
+            width: fit-content;
+        }
+
+        .quantity-control button {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            font-weight: 600;
+        }
+
+        .quantity-control button:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .quantity-control input {
+            width: 50px;
+            text-align: center;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .cart-summary {
+            margin-top: 30px;
+            padding: 30px;
+            background: var(--light-bg);
+            border-radius: 12px;
+        }
+
+        .cart-summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+        }
+
+        .cart-summary-row.total {
+            border-top: 2px solid var(--border);
+            padding-top: 20px;
+            margin-top: 12px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 24px 30px;
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            line-height: 2;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-direction: column;
+                padding: 16px;
+            }
+            
+            .logo {
+                margin-bottom: 16px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-link {
+                padding: 12px 16px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .packages-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .empty-state-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .stats-section {
+            background: white;
+            padding: 60px 24px;
+            margin: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
 </head>
-
 <body>
-    <div class="overlay" onclick="toggleOverlay()"></div>
-
-    <!-- Navigation Section -->
-    <nav>
-        <ul>
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <!-- Header Section -->
-    <header class="hero" id="hero">
-        <!-- Your existing header content goes here -->
-        <div class="hero__content">
-            <h1>KOUSHIK</h1>
-            <h2 data-content="Web Developer">Web Developer</h2>
-            <p>Passionate about crafting beautiful and functional web experiences. <br>Seeking opportunities to learn,
-                collaborate, and build.</p>
-            <button type="button" class="button">My Skills</button>
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">OutdoorPro™</div>
+            <nav>
+                <ul>
+                    <li><a href="#" data-page="home" class="nav-link active">Home</a></li>
+                    <li><a href="#" data-page="equipment" class="nav-link">Equipment</a></li>
+                    <li><a href="#" data-page="furniture" class="nav-link">Furniture</a></li>
+                    <li><a href="#" data-page="packages" class="nav-link">Packages</a></li>
+                    <li><a href="#" data-page="reviews" class="nav-link">Reviews</a></li>
+                    <li><a href="#" data-page="basket" class="nav-link">Cart<span class="basket-badge" id="basket-count">0</span></a></li>
+                </ul>
+            </nav>
         </div>
-
     </header>
 
-    <section class="skills" id="skills">
-        <h2>Skills & Proficiencies</h2>
-        <ul class="skills__list">
-            <!-- HTML5 Skill -->
-            <li>
-                <div class="skill-icon">
-                    <img src="logo/html-logo.png" alt="HTML5 Logo">
+    <main class="main-content">
+        <!-- Home Page -->
+        <section id="home" class="page-section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Premium Outdoor Adventure Gear</h1>
+                    <p class="hero-subtitle">Elevate your camping experience with professional-grade equipment trusted by explorers worldwide</p>
+                    <div style="display: flex; gap: 16px; justify-content: center;">
+                        <a href="#" class="btn" data-page="packages">Explore Packages</a>
+                        <a href="#" class="btn btn-outline" data-page="equipment">Shop Equipment</a>
+                    </div>
                 </div>
-                <span class="skill-name">HTML5</span>
-                <span class="skill-level">90% Proficient</span>
-            </li>
-    
-            <!-- CSS3 Skill -->
-            <li>
-                <div class="skill-icon">
-                    <img src="logo/css3-logo.png" alt="CSS3 Logo">
-                </div>
-                <span class="skill-name">CSS3</span>
-                <span class="skill-level">85% Proficient</span>
-            </li>
-    
-            <!-- JavaScript Skill -->
-            <li>
-                <div class="skill-icon">
-                    <img src="logo/javascript-logo.png" alt="JavaScript Logo">
-                </div>
-                <span class="skill-name">JavaScript</span>
-                <span class="skill-level">75% Proficient</span>
-            </li>
-    
-            <!-- Bootstrap Skill -->
-            <li>
-                <div class="skill-icon">
-                    <img src="logo/bootstrap-logo.png" alt="Bootstrap Logo">
-                </div>
-                <span class="skill-name">Bootstrap</span>
-                <span class="skill-level">60% Proficient</span>
-            </li>
-    
-            <!-- Add more skills if needed -->
-        </ul>
-    </section>
-
-
-   <!-- Projects Section -->
-<section class="projects" id="projects">
-    <!-- Your existing projects section content goes here -->
-    <h2>Featured Projects</h2>
-    <div class="projects__grid">
-        <!-- Project Items -->
-        <div class="project">
-            <div class="project__image-container" onclick="toggleModal()">
-                <img src="images/project-1.jpg" alt="Project 1 thumbnail" class="project__image">
-                <a href="https://convincemydad.liveblog365.com/" class="project__link">View Project</a>
             </div>
-            <div class="project__details">
-                <h3>Project 1 Title</h3>
-                <p>Just some basic html5 and css used and hosted the site with free hosting.</p>
+
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Happy Customers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4.9/5</div>
+                        <div class="stat-label">Average Rating</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support Available</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2 Year</div>
+                        <div class="stat-label">Warranty</div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <!-- Add more project items if needed -->
-    </div>
-</section>
 
-<!-- About Section -->
-    <section class="about" id="about">
-        <h2>About Me</h2>
-        <div class="about__content">
-            <img src="images/hero image.jpg" alt="Your headshot" class="about__image" id="aboutImage">
-
-        <p>Compelling paragraph about myself, my journey, and my aspirations. I'm a passionate web developer with a
-            knack for creating beautiful and functional user experiences. I'm driven by a constant thirst for
-            learning, collaboration, and growth in the tech industry. When I'm not coding, you'll find me exploring
-            new technologies, contributing to open-source projects, or geeking out over the latest design trends.
-            The code I write isn't just a series of commands; it's the chisel that sculpts my vision into reality.
-            My passion for design isn't a fleeting trend; it's a deeply rooted love for crafting elegant and
-            intentional experiences. Every pixel I place echoes with the lessons learned, the moments shared, the
-            adventures embarked upon. My goal? To become a digital Michelangelo, shaping not just websites, but
-            bridges between individuals, fostering connection and understanding through thoughtful design.
-        </p>
-    </div>
-</section>
-
-
-
-    <!-- Blog Section -->
-    <section class="blog" id="blog">
-        <!-- Your existing blog section content goes here -->
-        <h2>Blog Posts</h2>
-        <div class="blog-posts">
-            <!-- Blog Post Items -->
-            <div class="blog-post">
-                <h3>Blog Post Title</h3>
-                <p>Excerpt from the blog post...</p>
-                <a href="your-full-blog-post-url" class="read-more">Read More</a>
-                <div class="metadata">Published on: Date | Author: Your Name | Category: Web Development</div>
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Products</h2>
+                    <p class="section-subtitle">Handpicked gear for your next adventure</p>
+                </div>
+                
+                <div class="product-grid">
+                    <div class="product-card">
+                        <span class="product-badge">Bestseller</span>
+                        <div class="product-image">⛺</div>
+                        <div class="product-content">
+                            <div class="product-category">Shelter</div>
+                            <h3 class="product-name">Alpine Pro 4-Person Tent</h3>
+                            <p class="product-description">Weather-resistant with advanced ventilation system and quick setup technology</p>
+                            <div class="product-footer">
+                                <div class="product-price">$299<small>$399</small></div>
+                                <button class="btn btn-sm" data-add-to-cart data-name="Alpine Pro 4-Person Tent" data-price="299">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <span class="product-badge">New Arrival</span>
+                        <div class="product-image">🎒</div>
+                        <div class="product-content">
+                            <div class="product-category">Backpacks</div>
+                            <h3 class="product-name">Expedition 75L Backpack</h3>
+                            <p class="product-description">Ergonomic support system with waterproof coating and modular compartments</p>
+                            <div class="product-footer">
+                                <div class="product-price">$189</div>
+                                <button class="btn btn-sm" data-add-to-cart data-name="Expedition 75L Backpack" data-price="189">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">🔥</div>
+                        <div class="product-content">
+                            <div class="product-category">Cooking</div>
+                            <h3 class="product-name">UltraFlame Pro Stove</h3>
+                            <p class="product-description">High-efficiency burner with wind protection and integrated pressure regulator</p>
+                            <div class="product-footer">
+                                <div class="product-price">$129</div>
+                                <button class="btn btn-sm" data-add-to-cart data-name="UltraFlame Pro Stove" data-price="129">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <!-- Add more blog post items if needed -->
-        </div>
-    </section>
-<!-- Contact Section Styles -->
-<section class="contact" id="contact">
-    <h2>Get in Touch</h2>
-    <form action="https://formspree.io/your-email-here" method="POST">
-        <!-- Contact Form -->
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" required>
+        </section>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required>
+        <!-- Equipment Page -->
+        <section id="equipment" class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Professional Camping Equipment</h2>
+                    <p class="section-subtitle">Gear up with industry-leading outdoor equipment</p>
+                </div>
+                
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">⛺</div>
+                        <div class="product-content">
+                            <div class="product-category">Tents</div>
+                            <h3 class="product-name">Summit Ultralight 2P</h3>
+                            <p class="product-description">1.8kg ultralight tent with ripstop fabric and aluminum poles</p>
+                            <div class="product-footer">
+                                <div class="product-price">$449</div>
+                                <button class="btn btn-sm" data-add-to-cart data-name="Summit Ultralight 2P" data-price="449">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <span class="product-badge">Limited Edition</span>
+                        <div class="product-image">🛏️</div>
+                        <div class="product-content">
+                            <div class="product-category">Sleep System</div>
+                            <h3 class="product-name">Arctic Sleeping Bag -20°C</h3>
+                            <p class="product-description">Extreme cold weather protection with hydrophobic down insulation</p>
+                            <div class="product-footer">
+                                <div class="product-price">$329</div>
+                                <button class="btn btn-sm" data-add-to-cart data-name="Arctic Sleeping Bag -20°C" data-price="329">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">💡</div>
+                        <div class="product-content">
+                            <div class="product-category">Lighting</div>
+                            <h3 class="product-name">Solar Power Bank & Lantern</h3>
+                            <p class="product-description">20,000mAh capacity with 360° LED illumination</p>
+                            <div class="product-footer">
+                                <div class="product-price">$89</div>
+                                <button class="btn btn-sm" data-add-to-cart data-name="Solar Power Bank & Lantern" data-price="89">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">💧</div>
+                        <div class="product-content">
+                            <div class="product-category">Hydration</div>
+                            <h3 class="product-name">PureFlow Water Purifier</h3>
+                            <p class="product-description">Removes 99.999% of bacteria and protozoa from any water source</p>
+                            <div class="product-footer">
+                                <div class="product-price">$69</div>
+                                <button class="btn btn-sm" data-add-to-cart data-name="PureFlow Water Purifier" data-price="69">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">🧭</div>
+                        <div class="product-content">
+                            <div class="product-category">Navigation</div>
+                            <h3 class="product-name">GPS Navigator Pro</h3>
+                            <p class="product-description">Military-grade GPS with topographic maps and 48hr battery</p>
+                            <div class="product-footer">
+                                <div class="product-price">$399</div>
+                                <button class="btn btn-sm" data-add-to-cart data-name="GPS Navigator Pro" data-price="399">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">🏥</div>
+                        <div class="product-content">
+                            <div class="product-category">Safety</div>
+                            <h3 class="product-name">Wilderness First Aid Kit</h3>
+                            <p class="product-description">Comprehensive 150-piece medical kit with trauma supplies</p>
+                            <div class="product-footer">
+                                <div class="product-price">$119</div>
+                                <button class="btn btn-sm" data-add-to-cart data-name="Wilderness First Aid Kit" data-price="119">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <label for="message">Message:</label>
-        <textarea name="message" id="message" required></textarea>
+        <!-- Furniture Page -->
+        <section id="furniture" class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Premium Camping Furniture</h2>
+                    <p class="section-subtitle">Comfort meets durability in the great outdoors</p>
+                </div>
+                
+                <div class="product-grid">
+                    <div class="product-card">
+                        <div class="product-image">🪑</div>
+                        <div class="product-content">
+                            <div class="product-category">Seating</div>
+                            <h3 class="product-name">Comfort Plus Recliner</h3>
+                            <p class="product-description">Adjustable reclining positions with lumbar support and cup holder</p>
+                            <div class="product-footer">
+                                <div class="product-price">$149</div>
+                                <button class="btn btn-sm" data-add-to-cart data-name="Comfort Plus Recliner" data-price="149">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <span class="product-badge">Premium</span>
+                        <div class="product-image">🏕️</div>
+                        <div class="product-content">
+                            <div class="product-category">Tables</div>
+                            <h3 class="product-name">Roll-Top Aluminum Table XL</h3>
+                            <p class="product-description">Seats 6 people, height adjustable with carry bag included</p>
+                            <div class="product-footer">
+                                <div class="product-price">$189</div>
+                                <button class="btn btn-sm" data-add-to-cart data-name="Roll-Top Aluminum Table XL" data-price="189">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">🛋️</div>
+                        <div class="product-content">
+                            <div class="product-category">Lounging</div>
+                            <h3 class="product-name">Double Camping Hammock</h3>
+                            <p class="product-description">Parachute nylon with mosquito net and rain fly</p>
+                            <div class="product-footer">
+                                <div class="product-price">$99</div>
+                                <button class="btn btn-sm" data-add-to-cart data-name="Double Camping Hammock" data-price="99">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">🛏️</div>
+                        <div class="product-content">
+                            <div class="product-category">Sleeping</div>
+                            <h3 class="product-name">Elevated Camping Cot XL</h3>
+                            <p class="product-description">600lbs capacity with thick foam mattress pad</p>
+                            <div class="product-footer">
+                                <div class="product-price">$229</div>
+                                <button class="btn btn-sm" data-add-to-cart data-name="Elevated Camping Cot XL" data-price="229">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <button type="submit">Send Message</button>
-    </form>
+        <!-- Packages Page -->
+        <section id="packages" class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Complete Adventure Packages</h2>
+                    <p class="section-subtitle">Everything you need, bundled and ready to go</p>
+                </div>
+                
+                <div class="packages-container">
+                    <div class="package-card">
+                        <div class="package-header">
+                            <div class="package-name">Explorer Starter</div>
+                            <div class="package-tagline">Perfect for beginners</div>
+                        </div>
+                        <div class="package-body">
+                            <div class="package-price">
+                                <div class="package-amount"><sup>$</sup>299</div>
+                                <div class="package-savings">Save $80</div>
+                            </div>
+                            <ul class="package-features">
+                                <li>2-Person Tent</li>
+                                <li>2 Sleeping Bags</li>
+                                <li>Portable Stove</li>
+                                <li>Basic Cookware Set</li>
+                                <li>2 LED Flashlights</li>
+                                <li>First Aid Kit</li>
+                            </ul>
+                            <button class="btn" style="width: 100%;" data-add-to-cart data-name="Explorer Starter Package" data-price="299">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="package-card featured">
+                        <div class="package-header">
+                            <div class="package-name">Adventure Pro</div>
+                            <div class="package-tagline">Most popular choice</div>
+                        </div>
+                        <div class="package-body">
+                            <div class="package-price">
+                                <div class="package-amount"><sup>$</sup>699</div>
+                                <div class="package-savings">Save $200</div>
+                            </div>
+                            <ul class="package-features">
+                                <li>4-Person Premium Tent</li>
+                                <li>4 All-Season Sleeping Bags</li>
+                                <li>Professional Stove System</li>
+                                <li>Complete Cookware Set</li>
+                                <li>Portable Table & 4 Chairs</li>
+                                <li>Solar Power Bank & Lantern</li>
+                                <li>Water Purification System</li>
+                                <li>Comprehensive First Aid Kit</li>
+                            </ul>
+                            <button class="btn" style="width: 100%;" data-add-to-cart data-name="Adventure Pro Package" data-price="699">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="package-card">
+                        <div class="package-header">
+                            <div class="package-name">Expedition Elite</div>
+                            <div class="package-tagline">For serious adventurers</div>
+                        </div>
+                        <div class="package-body">
+                            <div class="package-price">
+                                <div class="package-amount"><sup>$</sup>1299</div>
+                                <div class="package-savings">Save $400</div>
+                            </div>
+                            <ul class="package-features">
+                                <li>6-Person Weather Master Tent</li>
+                                <li>6 Extreme Weather Sleeping Bags</li>
+                                <li>Dual Burner Stove System</li>
+                                <li>Professional Cookware Set</li>
+                                <li>Deluxe Table & 6 Chairs</li>
+                                <li>Complete Power Station</li>
+                                <li>Advanced Water Filtration</li>
+                                <li>GPS Navigation System</li>
+                                <li>Professional Medical Kit</li>
+                            </ul>
+                            <button class="btn" style="width: 100%;" data-add-to-cart data-name="Expedition Elite Package" data-price="1299">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Contact Information -->
-    <div class="contact-info">
-        <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
-        <p>Phone: <a href="tel:+123456789">+123 456 789</a></p>
-    </div>
-</section>
+        <!-- Reviews Page -->
+        <section id="reviews" class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Customer Reviews</h2>
+                    <p class="section-subtitle">See what our adventurers have to say</p>
+                </div>
+                
+                <div class="review-form-container">
+                    <h3 style="margin-bottom: 24px;">Share Your Experience</h3>
+                    <form id="reviewForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="reviewName">Your Name</label>
+                                <input type="text" id="reviewName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="reviewEmail">Email</label>
+                                <input type="email" id="reviewEmail" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="reviewProduct">Product</label>
+                            <select id="reviewProduct" class="form-select" required>
+                                <option value="">Select a product...</option>
+                                <option>Alpine Pro 4-Person Tent</option>
+                                <option>Expedition 75L Backpack</option>
+                                <option>Arctic Sleeping Bag</option>
+                                <option>Adventure Pro Package</option>
+                                <option>Other Product</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Rating</label>
+                            <div class="rating-input">
+                                <label for="star5" class="active">★</label><input type="radio" id="star5" name="rating" value="5" checked>
+                                <label for="star4" class="active">★</label><input type="radio" id="star4" name="rating" value="4">
+                                <label for="star3" class="active">★</label><input type="radio" id="star3" name="rating" value="3">
+                                <label for="star2" class="active">★</label><input type="radio" id="star2" name="rating" value="2">
+                                <label for="star1" class="active">★</label><input type="radio" id="star1" name="rating" value="1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="reviewText">Your Review</label>
+                            <textarea id="reviewText" class="form-textarea" placeholder="Tell us about your experience..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Submit Review</button>
+                    </form>
+                </div>
+                
+                <div class="reviews-grid" id="reviewsList">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author-info">
+                                <div class="review-avatar">JD</div>
+                                <div class="review-author-details">
+                                    <div class="review-author">James Davidson</div>
+                                    <div class="review-date">2 weeks ago</div>
+                                </div>
+                            </div>
+                            <div class="review-rating">★★★★★</div>
+                        </div>
+                        <div class="review-product">Alpine Pro 4-Person Tent</div>
+                        <p>Outstanding quality! This tent survived a major storm on our mountain trip. Setup was incredibly easy, taking less than 10 minutes. The ventilation system works perfectly, no condensation issues at all.</p>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author-info">
+                                <div class="review-avatar">SR</div>
+                                <div class="review-author-details">
+                                    <div class="review-author">Sarah Richardson</div>
+                                    <div class="review-date">1 month ago</div>
+                                </div>
+                            </div>
+                            <div class="review-rating">★★★★★</div>
+                        </div>
+                        <div class="review-product">Adventure Pro Package</div>
+                        <p>Best investment for our family camping trips! Everything included is high quality and well thought out. We've used it on three trips already and couldn't be happier. The savings compared to buying individually are significant.</p>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-author-info">
+                                <div class="review-avatar">MT</div>
+                                <div class="review-author-details">
+                                    <div class="review-author">Michael Torres</div>
+                                    <div class="review-date">2 months ago</div>
+                                </div>
+                            </div>
+                            <div class="review-rating">★★★★☆</div>
+                        </div>
+                        <div class="review-product">Expedition 75L Backpack</div>
+                        <p>Excellent backpack for long treks. The weight distribution is perfect and the modular system allows for great customization. Only wish it had a few more exterior pockets for quick access items.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Basket Page -->
+        <section id="basket" class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Shopping Cart</h2>
+                    <p class="section-subtitle">Review your items before checkout</p>
+                </div>
+                
+                <div class="cart-container">
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="basketItems">
+                            <tr>
+                                <td colspan="5">
+                                    <div class="empty-state">
+                                        <div class="empty-state-icon">🛒</div>
+                                        <div class="empty-state-title">Your cart is empty</div>
+                                        <p>Add some amazing gear to get started!</p>
+                                        <button class="btn" style="margin-top: 20px;" data-page="equipment">Browse Equipment</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="cart-summary" id="cartSummary" style="display: none;">
+                        <div class="cart-summary-row">
+                            <span>Subtotal</span>
+                            <span id="subtotal">$0.00</span>
+                        </div>
+                        <div class="cart-summary-row">
+                            <span>Shipping</span>
+                            <span>FREE</span>
+                        </div>
+                        <div class="cart-summary-row">
+                            <span>Tax (estimated)</span>
+                            <span id="tax">$0.00</span>
+                        </div>
+                        <div class="cart-summary-row total">
+                            <span>Total</span>
+                            <span id="total">$0.00</span>
+                        </div>
+                        <button class="btn" style="width: 100%; margin-top: 24px;" id="checkoutBtn">Proceed to Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <!-- Back-to-Top Button with Logo -->
-    <button id="back-to-top-btn" onclick="topFunction()">
-        <img src="logo/icon top.png" alt="Logo" class="logo">
-        <span>Top</span>
-    </button>
-
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer>
-        <!-- Your existing footer content goes here -->
-        <div class="footer__content">
-            <p>&copy; 2023 KOUSHIK | Connect with me on <a href="https://github.com/your-username"
-                    target="_blank">GitHub</a></p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>OutdoorPro™</h3>
+                <p style="color: rgba(255,255,255,0.7); margin-top: 12px;">Your trusted partner for outdoor adventures since 2010.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Warranty</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">YouTube</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 OutdoorPro™. All rights reserved. | Privacy Policy | Terms of Service</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
-</body>
+    <script>
+        // Navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.page-section');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetPage = e.target.dataset.page || e.target.parentElement.dataset.page;
+                
+                sections.forEach(section => section.classList.remove('active'));
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+                
+                document.getElementById(targetPage).classList.add('active');
+                e.target.closest('.nav-link').classList.add('active');
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
 
+        // Cart Management
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('basket-count').textContent = count;
+        }
+        
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ 
+                    name, 
+                    price: parseFloat(price), 
+                    quantity: 1,
+                    icon: getProductIcon(name)
+                });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartDisplay();
+            
+            // Show success message
+            const message = document.createElement('div');
+            message.style.cssText = 'position: fixed; top: 100px; right: 20px; background: var(--success); color: white; padding: 16px 24px; border-radius: 8px; box-shadow: var(--shadow-lg); z-index: 9999; animation: slideIn 0.3s ease;';
+            message.textContent = `✓ ${name} added to cart`;
+            document.body.appendChild(message);
+            setTimeout(() => message.remove(), 3000);
+        }
+        
+        function getProductIcon(name) {
+            if (name.includes('Tent')) return '⛺';
+            if (name.includes('Bag') || name.includes('Backpack')) return '🎒';
+            if (name.includes('Stove') || name.includes('Cook')) return '🔥';
+            if (name.includes('Chair') || name.includes('Recliner')) return '🪑';
+            if (name.includes('Table')) return '🏕️';
+            if (name.includes('Package')) return '📦';
+            return '🏔️';
+        }
+        
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartDisplay();
+        }
+        
+        function updateQuantity(index, delta) {
+            cart[index].quantity += delta;
+            if (cart[index].quantity <= 0) {
+                removeFromCart(index);
+            } else {
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+                updateCartDisplay();
+            }
+        }
+        
+        function updateCartDisplay() {
+            const tbody = document.getElementById('basketItems');
+            const summary = document.getElementById('cartSummary');
+            
+            if (cart.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5">
+                            <div class="empty-state">
+                                <div class="empty-state-icon">🛒</div>
+                                <div class="empty-state-title">Your cart is empty</div>
+                                <p>Add some amazing gear to get started!</p>
+                                <button class="btn" style="margin-top: 20px;" data-page="equipment">Browse Equipment</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                summary.style.display = 'none';
+                
+                // Reattach event listener for browse button
+                const browseBtn = tbody.querySelector('[data-page]');
+                if (browseBtn) {
+                    browseBtn.addEventListener('click', (e) => {
+                        const targetPage = e.target.dataset.page;
+                        document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+                        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                        document.getElementById(targetPage).classList.add('active');
+                        document.querySelector(`[data-page="${targetPage}"]`).classList.add('active');
+                    });
+                }
+            } else {
+                let html = '';
+                let subtotal = 0;
+                
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+                    html += `
+                        <tr>
+                            <td>
+                                <div class="cart-item-info">
+                                    <div class="cart-item-image">${item.icon || '🏔️'}</div>
+                                    <div class="cart-item-name">${item.name}</div>
+                                </div>
+                            </td>
+                            <td>$${item.price.toFixed(2)}</td>
+                            <td>
+                                <div class="quantity-control">
+                                    <button onclick="updateQuantity(${index}, -1)">−</button>
+                                    <input type="number" value="${item.quantity}" readonly>
+                                    <button onclick="updateQuantity(${index}, 1)">+</button>
+                                </div>
+                            </td>
+                            <td>$${itemTotal.toFixed(2)}</td>
+                            <td>
+                                <button class="btn btn-sm" style="background: transparent; color: var(--text-secondary); box-shadow: none;" onclick="removeFromCart(${index})">Remove</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+                
+                tbody.innerHTML = html;
+                summary.style.display = 'block';
+                
+                const tax = subtotal * 0.08;
+                const total = subtotal + tax;
+                
+                document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+                document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
+                document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+            }
+        }
+        
+        // Add to Cart Buttons
+        document.querySelectorAll('[data-add-to-cart]').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const name = e.target.dataset.name;
+                const price = e.target.dataset.price;
+                addToCart(name, price);
+            });
+        });
+        
+        // Review Form
+        document.getElementById('reviewForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('reviewName').value;
+            const product = document.getElementById('reviewProduct').value;
+            const rating = document.querySelector('input[name="rating"]:checked').value;
+            const text = document.getElementById('reviewText').value;
+            
+            const initials = name.split(' ').map(n => n[0]).join('').toUpperCase();
+            const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+            
+            const reviewHtml = `
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-author-info">
+                            <div class="review-avatar">${initials}</div>
+                            <div class="review-author-details">
+                                <div class="review-author">${name}</div>
+                                <div class="review-date">Just now</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">${stars}</div>
+                    </div>
+                    <div class="review-product">${product}</div>
+                    <p>${text}</p>
+                </div>
+            `;
+            
+            document.getElementById('reviewsList').insertAdjacentHTML('afterbegin', reviewHtml);
+            document.getElementById('reviewForm').reset();
+            
+            // Success message
+            alert('Thank you for your review! It has been submitted successfully.');
+        });
+        
+        // Checkout
+        document.getElementById('checkoutBtn')?.addEventListener('click', () => {
+            if (cart.length > 0) {
+                alert('Thank you for your order! This is a demo checkout. In a real application, you would be redirected to a secure payment gateway.');
+            }
+        });
+        
+        // Initialize
+        updateCartCount();
+        updateCartDisplay();
+        
+        // Rating stars interaction
+        document.querySelectorAll('.rating-input label').forEach((star, index, stars) => {
+            star.addEventListener('click', () => {
+                stars.forEach((s, i) => {
+                    if (i >= stars.length - index - 1) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
 </html>
