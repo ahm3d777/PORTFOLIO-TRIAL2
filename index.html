@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OutdoorPro™ - Premium Camping & Outdoor Equipment</title>
+    <meta name="description" content="Premium outdoor adventure gear and camping equipment. Weather-resistant tents, backpacks, and complete adventure packages with 2-year warranty.">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
@@ -39,7 +40,7 @@
             overflow-x: hidden;
         }
 
-        /* Premium Navigation */
+        /* Enhanced Navigation */
         .navbar {
             background: var(--white);
             box-shadow: var(--shadow-sm);
@@ -50,6 +51,11 @@
             transition: all 0.3s ease;
         }
 
+        .navbar.scrolled {
+            box-shadow: var(--shadow-md);
+            backdrop-filter: blur(10px);
+        }
+
         .navbar-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -57,6 +63,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 24px;
+            position: relative;
         }
 
         .logo {
@@ -74,6 +81,68 @@
             content: "⛺";
             font-size: 1.8rem;
             -webkit-text-fill-color: initial;
+        }
+
+        /* Search Bar */
+        .search-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+            margin: 0 40px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 40px;
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: var(--light-bg);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            color: var(--text-secondary);
+            pointer-events: none;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 20px;
+            height: 2px;
+            background: var(--text-primary);
+            margin: 2px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
         }
 
         nav ul {
@@ -112,6 +181,13 @@
             background: var(--accent);
         }
 
+        .cart-icon-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
         .basket-badge {
             background: var(--accent);
             color: white;
@@ -119,7 +195,45 @@
             padding: 2px 8px;
             font-size: 0.75rem;
             font-weight: 600;
-            margin-left: 6px;
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            background: white;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border);
+            display: none;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .filter-bar.active {
+            display: flex;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-select {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            background: white;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--accent);
         }
 
         /* Main Content */
@@ -229,6 +343,11 @@
             font-size: 0.9rem;
         }
 
+        .btn-xs {
+            padding: 4px 12px;
+            font-size: 0.8rem;
+        }
+
         /* Container */
         .container {
             max-width: 1400px;
@@ -254,7 +373,7 @@
             color: var(--text-secondary);
         }
 
-        /* Product Grid */
+        /* Enhanced Product Grid */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -287,6 +406,15 @@
             font-size: 0.75rem;
             font-weight: 600;
             z-index: 1;
+        }
+
+        .product-badge.new {
+            background: var(--success);
+        }
+
+        .product-badge.sale {
+            background: var(--warning);
+            color: var(--text-primary);
         }
 
         .product-image {
@@ -333,14 +461,42 @@
         .product-description {
             color: var(--text-secondary);
             font-size: 0.95rem;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             line-height: 1.6;
+        }
+
+        /* Enhanced Product Features */
+        .product-features {
+            margin-bottom: 16px;
+        }
+
+        .product-features ul {
+            list-style: none;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .product-features li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .product-features li:before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+            width: 16px;
+            flex-shrink: 0;
         }
 
         .product-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-top: 1px solid var(--border);
+            padding-top: 16px;
         }
 
         .product-price {
@@ -355,6 +511,107 @@
             font-weight: 400;
             text-decoration: line-through;
             margin-left: 8px;
+        }
+
+        .product-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-end;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .stars {
+            color: #ffc107;
+        }
+
+        /* Enhanced Cart */
+        .cart-preview {
+            position: fixed;
+            top: 73px;
+            right: -400px;
+            width: 400px;
+            height: calc(100vh - 73px);
+            background: white;
+            box-shadow: var(--shadow-lg);
+            transition: right 0.3s ease;
+            z-index: 999;
+            overflow-y: auto;
+        }
+
+        .cart-preview.active {
+            right: 0;
+        }
+
+        .cart-preview-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-preview-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        .cart-preview-items {
+            padding: 20px;
+        }
+
+        .cart-preview-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-preview-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .cart-item-price {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
         }
 
         /* Package Cards */
@@ -648,17 +905,6 @@
             gap: 16px;
         }
 
-        .cart-item-image {
-            width: 60px;
-            height: 60px;
-            border-radius: 8px;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-
         .cart-item-name {
             font-weight: 600;
             color: var(--primary);
@@ -723,6 +969,42 @@
             font-weight: 700;
         }
 
+        /* Stats Section */
+        .stats-section {
+            background: white;
+            padding: 60px 24px;
+            margin: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         /* Footer */
         footer {
             background: var(--primary);
@@ -769,39 +1051,6 @@
             color: rgba(255,255,255,0.6);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .navbar-container {
-                flex-direction: column;
-                padding: 16px;
-            }
-            
-            .logo {
-                margin-bottom: 16px;
-            }
-            
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .nav-link {
-                padding: 12px 16px;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .packages-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
         /* Empty State */
         .empty-state {
             text-align: center;
@@ -822,10 +1071,28 @@
             color: var(--text-primary);
         }
 
-        /* Animations */
-        @keyframes slideIn {
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            z-index: 9999;
+            animation: slideInRight 0.3s ease;
+            max-width: 300px;
+        }
+
+        .toast.error {
+            background: var(--accent);
+        }
+
+        @keyframes slideInRight {
             from {
-                transform: translateX(-100%);
+                transform: translateX(100%);
                 opacity: 0;
             }
             to {
@@ -834,59 +1101,189 @@
             }
         }
 
-        .stats-section {
-            background: white;
-            padding: 60px 24px;
-            margin: 60px 0;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar-container {
+                padding: 16px;
+            }
+            
+            .search-container {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 73px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 73px);
+                background: white;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: stretch;
+                transition: left 0.3s ease;
+                padding-top: 20px;
+                box-shadow: var(--shadow-md);
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            .nav-link {
+                padding: 16px 24px;
+                border-bottom: 1px solid var(--border);
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .packages-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .package-card.featured {
+                transform: none;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cart-preview {
+                width: 100vw;
+                right: -100vw;
+            }
+            
+            .filter-bar {
+                padding: 16px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .stat-item {
-            padding: 20px;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        @media (max-width: 480px) {
+            .hero {
+                padding: 60px 16px;
+            }
+            
+            .container {
+                padding: 40px 16px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <header class="navbar">
+    <header class="navbar" id="navbar">
         <div class="navbar-container">
             <div class="logo">OutdoorPro™</div>
+            
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" placeholder="Search products..." id="searchInput">
+            </div>
+
+            <div class="mobile-menu-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
             <nav>
-                <ul>
+                <ul id="navMenu">
                     <li><a href="#" data-page="home" class="nav-link active">Home</a></li>
                     <li><a href="#" data-page="equipment" class="nav-link">Equipment</a></li>
                     <li><a href="#" data-page="furniture" class="nav-link">Furniture</a></li>
                     <li><a href="#" data-page="packages" class="nav-link">Packages</a></li>
                     <li><a href="#" data-page="reviews" class="nav-link">Reviews</a></li>
-                    <li><a href="#" data-page="basket" class="nav-link">Cart<span class="basket-badge" id="basket-count">0</span></a></li>
+                    <li>
+                        <a href="#" class="nav-link cart-icon-container" id="cartToggle">
+                            Cart
+                            <span class="basket-badge" id="basket-count">0</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar" id="filterBar">
+        <div class="filter-group">
+            <label for="categoryFilter">Category:</label>
+            <select id="categoryFilter" class="filter-select">
+                <option value="">All Categories</option>
+                <option value="shelter">Shelter</option>
+                <option value="backpacks">Backpacks</option>
+                <option value="cooking">Cooking</option>
+                <option value="sleep">Sleep System</option>
+                <option value="lighting">Lighting</option>
+                <option value="hydration">Hydration</option>
+                <option value="navigation">Navigation</option>
+                <option value="safety">Safety</option>
+                <option value="seating">Seating</option>
+                <option value="tables">Tables</option>
+                <option value="lounging">Lounging</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="priceFilter">Price Range:</label>
+            <select id="priceFilter" class="filter-select">
+                <option value="">All Prices</option>
+                <option value="0-100">Under $100</option>
+                <option value="100-200">$100 - $200</option>
+                <option value="200-300">$200 - $300</option>
+                <option value="300-500">$300 - $500</option>
+                <option value="500+">$500+</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="ratingFilter">Rating:</label>
+            <select id="ratingFilter" class="filter-select">
+                <option value="">All Ratings</option>
+                <option value="4">4+ Stars</option>
+                <option value="4.5">4.5+ Stars</option>
+                <option value="5">5 Stars Only</option>
+            </select>
+        </div>
+        <button class="btn btn-xs" onclick="clearFilters()">Clear Filters</button>
+    </div>
+
+    <!-- Cart Preview -->
+    <div class="cart-preview" id="cartPreview">
+        <div class="cart-preview-header">
+            <div class="cart-preview-title">Shopping Cart</div>
+            <button class="close-cart" id="closeCart">&times;</button>
+        </div>
+        <div class="cart-preview-items" id="cartPreviewItems">
+            <!-- Cart items will be populated here -->
+        </div>
+    </div>
 
     <main class="main-content">
         <!-- Home Page -->
@@ -895,7 +1292,7 @@
                 <div class="hero-content">
                     <h1>Premium Outdoor Adventure Gear</h1>
                     <p class="hero-subtitle">Elevate your camping experience with professional-grade equipment trusted by explorers worldwide</p>
-                    <div style="display: flex; gap: 16px; justify-content: center;">
+                    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
                         <a href="#" class="btn" data-page="packages">Explore Packages</a>
                         <a href="#" class="btn btn-outline" data-page="equipment">Shop Equipment</a>
                     </div>
@@ -930,43 +1327,91 @@
                 </div>
                 
                 <div class="product-grid">
-                    <div class="product-card">
+                    <div class="product-card" data-category="shelter" data-price="299" data-rating="4.8">
                         <span class="product-badge">Bestseller</span>
                         <div class="product-image">⛺</div>
                         <div class="product-content">
                             <div class="product-category">Shelter</div>
                             <h3 class="product-name">Alpine Pro 4-Person Tent</h3>
-                            <p class="product-description">Weather-resistant with advanced ventilation system and quick setup technology</p>
+                            <p class="product-description">Weather-resistant tent with advanced ventilation system and quick setup technology</p>
+                            <div class="product-features">
+                                <ul>
+                                    <li>Waterproof 3000mm rating</li>
+                                    <li>10-minute setup time</li>
+                                    <li>Advanced ventilation system</li>
+                                    <li>Reinforced stress points</li>
+                                </ul>
+                            </div>
                             <div class="product-footer">
-                                <div class="product-price">$299<small>$399</small></div>
-                                <button class="btn btn-sm" data-add-to-cart data-name="Alpine Pro 4-Person Tent" data-price="299">Add to Cart</button>
+                                <div>
+                                    <div class="product-price">$299<small>$399</small></div>
+                                    <div class="product-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span>4.8 (156 reviews)</span>
+                                    </div>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm" data-add-to-cart data-name="Alpine Pro 4-Person Tent" data-price="299">Add to Cart</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="product-card">
-                        <span class="product-badge">New Arrival</span>
+                    <div class="product-card" data-category="backpacks" data-price="189" data-rating="4.7">
+                        <span class="product-badge new">New Arrival</span>
                         <div class="product-image">🎒</div>
                         <div class="product-content">
                             <div class="product-category">Backpacks</div>
                             <h3 class="product-name">Expedition 75L Backpack</h3>
                             <p class="product-description">Ergonomic support system with waterproof coating and modular compartments</p>
+                            <div class="product-features">
+                                <ul>
+                                    <li>75L capacity with compression</li>
+                                    <li>Ergonomic hip belt</li>
+                                    <li>Hydration compatible</li>
+                                    <li>Rain cover included</li>
+                                </ul>
+                            </div>
                             <div class="product-footer">
-                                <div class="product-price">$189</div>
-                                <button class="btn btn-sm" data-add-to-cart data-name="Expedition 75L Backpack" data-price="189">Add to Cart</button>
+                                <div>
+                                    <div class="product-price">$189</div>
+                                    <div class="product-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span>4.7 (89 reviews)</span>
+                                    </div>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm" data-add-to-cart data-name="Expedition 75L Backpack" data-price="189">Add to Cart</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-category="cooking" data-price="129" data-rating="4.9">
                         <div class="product-image">🔥</div>
                         <div class="product-content">
                             <div class="product-category">Cooking</div>
                             <h3 class="product-name">UltraFlame Pro Stove</h3>
                             <p class="product-description">High-efficiency burner with wind protection and integrated pressure regulator</p>
+                            <div class="product-features">
+                                <ul>
+                                    <li>10,000 BTU output</li>
+                                    <li>Wind-resistant design</li>
+                                    <li>Auto-ignition system</li>
+                                    <li>Compact folding design</li>
+                                </ul>
+                            </div>
                             <div class="product-footer">
-                                <div class="product-price">$129</div>
-                                <button class="btn btn-sm" data-add-to-cart data-name="UltraFlame Pro Stove" data-price="129">Add to Cart</button>
+                                <div>
+                                    <div class="product-price">$129</div>
+                                    <div class="product-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span>4.9 (203 reviews)</span>
+                                    </div>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm" data-add-to-cart data-name="UltraFlame Pro Stove" data-price="129">Add to Cart</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -980,84 +1425,181 @@
                 <div class="section-header">
                     <h2 class="section-title">Professional Camping Equipment</h2>
                     <p class="section-subtitle">Gear up with industry-leading outdoor equipment</p>
+                    <button class="btn btn-sm" onclick="toggleFilters()" id="filterToggle">Show Filters</button>
                 </div>
                 
-                <div class="product-grid">
-                    <div class="product-card">
+                <div class="product-grid" id="equipmentGrid">
+                    <div class="product-card" data-category="shelter" data-price="449" data-rating="4.8">
                         <div class="product-image">⛺</div>
                         <div class="product-content">
                             <div class="product-category">Tents</div>
                             <h3 class="product-name">Summit Ultralight 2P</h3>
                             <p class="product-description">1.8kg ultralight tent with ripstop fabric and aluminum poles</p>
+                            <div class="product-features">
+                                <ul>
+                                    <li>Only 1.8kg total weight</li>
+                                    <li>20D ripstop nylon</li>
+                                    <li>DAC Featherlite poles</li>
+                                    <li>Free-standing design</li>
+                                </ul>
+                            </div>
                             <div class="product-footer">
-                                <div class="product-price">$449</div>
-                                <button class="btn btn-sm" data-add-to-cart data-name="Summit Ultralight 2P" data-price="449">Add to Cart</button>
+                                <div>
+                                    <div class="product-price">$449</div>
+                                    <div class="product-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span>4.8 (127 reviews)</span>
+                                    </div>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm" data-add-to-cart data-name="Summit Ultralight 2P" data-price="449">Add to Cart</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="product-card">
-                        <span class="product-badge">Limited Edition</span>
+                    <div class="product-card" data-category="sleep" data-price="329" data-rating="4.9">
+                        <span class="product-badge sale">Limited Edition</span>
                         <div class="product-image">🛏️</div>
                         <div class="product-content">
                             <div class="product-category">Sleep System</div>
                             <h3 class="product-name">Arctic Sleeping Bag -20°C</h3>
                             <p class="product-description">Extreme cold weather protection with hydrophobic down insulation</p>
+                            <div class="product-features">
+                                <ul>
+                                    <li>Rated to -20°C/-4°F</li>
+                                    <li>850-fill down insulation</li>
+                                    <li>Hydrophobic treatment</li>
+                                    <li>Compression stuff sack</li>
+                                </ul>
+                            </div>
                             <div class="product-footer">
-                                <div class="product-price">$329</div>
-                                <button class="btn btn-sm" data-add-to-cart data-name="Arctic Sleeping Bag -20°C" data-price="329">Add to Cart</button>
+                                <div>
+                                    <div class="product-price">$329<small>$429</small></div>
+                                    <div class="product-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span>4.9 (94 reviews)</span>
+                                    </div>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm" data-add-to-cart data-name="Arctic Sleeping Bag -20°C" data-price="329">Add to Cart</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-category="lighting" data-price="89" data-rating="4.6">
                         <div class="product-image">💡</div>
                         <div class="product-content">
                             <div class="product-category">Lighting</div>
                             <h3 class="product-name">Solar Power Bank & Lantern</h3>
                             <p class="product-description">20,000mAh capacity with 360° LED illumination</p>
+                            <div class="product-features">
+                                <ul>
+                                    <li>20,000mAh battery</li>
+                                    <li>Solar panel charging</li>
+                                    <li>Multiple brightness levels</li>
+                                    <li>USB-C & wireless charging</li>
+                                </ul>
+                            </div>
                             <div class="product-footer">
-                                <div class="product-price">$89</div>
-                                <button class="btn btn-sm" data-add-to-cart data-name="Solar Power Bank & Lantern" data-price="89">Add to Cart</button>
+                                <div>
+                                    <div class="product-price">$89</div>
+                                    <div class="product-rating">
+                                        <span class="stars">★★★★☆</span>
+                                        <span>4.6 (178 reviews)</span>
+                                    </div>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm" data-add-to-cart data-name="Solar Power Bank & Lantern" data-price="89">Add to Cart</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-category="hydration" data-price="69" data-rating="4.7">
                         <div class="product-image">💧</div>
                         <div class="product-content">
                             <div class="product-category">Hydration</div>
                             <h3 class="product-name">PureFlow Water Purifier</h3>
                             <p class="product-description">Removes 99.999% of bacteria and protozoa from any water source</p>
+                            <div class="product-features">
+                                <ul>
+                                    <li>99.999% filtration rate</li>
+                                    <li>No pumping required</li>
+                                    <li>1L/minute flow rate</li>
+                                    <li>10,000L cartridge life</li>
+                                </ul>
+                            </div>
                             <div class="product-footer">
-                                <div class="product-price">$69</div>
-                                <button class="btn btn-sm" data-add-to-cart data-name="PureFlow Water Purifier" data-price="69">Add to Cart</button>
+                                <div>
+                                    <div class="product-price">$69</div>
+                                    <div class="product-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span>4.7 (156 reviews)</span>
+                                    </div>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm" data-add-to-cart data-name="PureFlow Water Purifier" data-price="69">Add to Cart</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-category="navigation" data-price="399" data-rating="4.8">
                         <div class="product-image">🧭</div>
                         <div class="product-content">
                             <div class="product-category">Navigation</div>
                             <h3 class="product-name">GPS Navigator Pro</h3>
                             <p class="product-description">Military-grade GPS with topographic maps and 48hr battery</p>
+                            <div class="product-features">
+                                <ul>
+                                    <li>Military-grade durability</li>
+                                    <li>48-hour battery life</li>
+                                    <li>Preloaded topo maps</li>
+                                    <li>SOS emergency feature</li>
+                                </ul>
+                            </div>
                             <div class="product-footer">
-                                <div class="product-price">$399</div>
-                                <button class="btn btn-sm" data-add-to-cart data-name="GPS Navigator Pro" data-price="399">Add to Cart</button>
+                                <div>
+                                    <div class="product-price">$399</div>
+                                    <div class="product-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span>4.8 (87 reviews)</span>
+                                    </div>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm" data-add-to-cart data-name="GPS Navigator Pro" data-price="399">Add to Cart</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-category="safety" data-price="119" data-rating="4.9">
                         <div class="product-image">🏥</div>
                         <div class="product-content">
                             <div class="product-category">Safety</div>
                             <h3 class="product-name">Wilderness First Aid Kit</h3>
                             <p class="product-description">Comprehensive 150-piece medical kit with trauma supplies</p>
+                            <div class="product-features">
+                                <ul>
+                                    <li>150 medical supplies</li>
+                                    <li>Trauma response items</li>
+                                    <li>Waterproof storage</li>
+                                    <li>Emergency instruction guide</li>
+                                </ul>
+                            </div>
                             <div class="product-footer">
-                                <div class="product-price">$119</div>
-                                <button class="btn btn-sm" data-add-to-cart data-name="Wilderness First Aid Kit" data-price="119">Add to Cart</button>
+                                <div>
+                                    <div class="product-price">$119</div>
+                                    <div class="product-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span>4.9 (134 reviews)</span>
+                                    </div>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm" data-add-to-cart data-name="Wilderness First Aid Kit" data-price="119">Add to Cart</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1074,55 +1616,119 @@
                 </div>
                 
                 <div class="product-grid">
-                    <div class="product-card">
+                    <div class="product-card" data-category="seating" data-price="149" data-rating="4.6">
                         <div class="product-image">🪑</div>
                         <div class="product-content">
                             <div class="product-category">Seating</div>
                             <h3 class="product-name">Comfort Plus Recliner</h3>
                             <p class="product-description">Adjustable reclining positions with lumbar support and cup holder</p>
+                            <div class="product-features">
+                                <ul>
+                                    <li>3 reclining positions</li>
+                                    <li>Built-in lumbar support</li>
+                                    <li>Padded armrests</li>
+                                    <li>300lb weight capacity</li>
+                                </ul>
+                            </div>
                             <div class="product-footer">
-                                <div class="product-price">$149</div>
-                                <button class="btn btn-sm" data-add-to-cart data-name="Comfort Plus Recliner" data-price="149">Add to Cart</button>
+                                <div>
+                                    <div class="product-price">$149</div>
+                                    <div class="product-rating">
+                                        <span class="stars">★★★★☆</span>
+                                        <span>4.6 (92 reviews)</span>
+                                    </div>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm" data-add-to-cart data-name="Comfort Plus Recliner" data-price="149">Add to Cart</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-category="tables" data-price="189" data-rating="4.8">
                         <span class="product-badge">Premium</span>
                         <div class="product-image">🏕️</div>
                         <div class="product-content">
                             <div class="product-category">Tables</div>
                             <h3 class="product-name">Roll-Top Aluminum Table XL</h3>
                             <p class="product-description">Seats 6 people, height adjustable with carry bag included</p>
+                            <div class="product-features">
+                                <ul>
+                                    <li>Seats up to 6 people</li>
+                                    <li>Height adjustable legs</li>
+                                    <li>Roll-top design</li>
+                                    <li>Lightweight aluminum</li>
+                                </ul>
+                            </div>
                             <div class="product-footer">
-                                <div class="product-price">$189</div>
-                                <button class="btn btn-sm" data-add-to-cart data-name="Roll-Top Aluminum Table XL" data-price="189">Add to Cart</button>
+                                <div>
+                                    <div class="product-price">$189</div>
+                                    <div class="product-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span>4.8 (67 reviews)</span>
+                                    </div>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm" data-add-to-cart data-name="Roll-Top Aluminum Table XL" data-price="189">Add to Cart</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-category="lounging" data-price="99" data-rating="4.7">
                         <div class="product-image">🛋️</div>
                         <div class="product-content">
                             <div class="product-category">Lounging</div>
                             <h3 class="product-name">Double Camping Hammock</h3>
                             <p class="product-description">Parachute nylon with mosquito net and rain fly</p>
+                            <div class="product-features">
+                                <ul>
+                                    <li>Double occupancy</li>
+                                    <li>Integrated mosquito net</li>
+                                    <li>Rain fly included</li>
+                                    <li>Tree-friendly straps</li>
+                                </ul>
+                            </div>
                             <div class="product-footer">
-                                <div class="product-price">$99</div>
-                                <button class="btn btn-sm" data-add-to-cart data-name="Double Camping Hammock" data-price="99">Add to Cart</button>
+                                <div>
+                                    <div class="product-price">$99</div>
+                                    <div class="product-rating">
+                                        <span class="stars">★★★★★</span>
+                                        <span>4.7 (143 reviews)</span>
+                                    </div>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm" data-add-to-cart data-name="Double Camping Hammock" data-price="99">Add to Cart</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="product-card">
+                    <div class="product-card" data-category="sleeping" data-price="229" data-rating="4.5">
                         <div class="product-image">🛏️</div>
                         <div class="product-content">
                             <div class="product-category">Sleeping</div>
                             <h3 class="product-name">Elevated Camping Cot XL</h3>
                             <p class="product-description">600lbs capacity with thick foam mattress pad</p>
+                            <div class="product-features">
+                                <ul>
+                                    <li>600lbs weight capacity</li>
+                                    <li>2-inch foam pad</li>
+                                    <li>Easy setup design</li>
+                                    <li>Aluminum frame</li>
+                                </ul>
+                            </div>
                             <div class="product-footer">
-                                <div class="product-price">$229</div>
-                                <button class="btn btn-sm" data-add-to-cart data-name="Elevated Camping Cot XL" data-price="229">Add to Cart</button>
+                                <div>
+                                    <div class="product-price">$229</div>
+                                    <div class="product-rating">
+                                        <span class="stars">★★★★☆</span>
+                                        <span>4.5 (73 reviews)</span>
+                                    </div>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn btn-sm" data-add-to-cart data-name="Elevated Camping Cot XL" data-price="229">Add to Cart</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1147,15 +1753,15 @@
                         <div class="package-body">
                             <div class="package-price">
                                 <div class="package-amount"><sup>$</sup>299</div>
-                                <div class="package-savings">Save $80</div>
+                                <div class="package-savings">Save $80 vs. individual</div>
                             </div>
                             <ul class="package-features">
-                                <li>2-Person Tent</li>
-                                <li>2 Sleeping Bags</li>
-                                <li>Portable Stove</li>
-                                <li>Basic Cookware Set</li>
-                                <li>2 LED Flashlights</li>
-                                <li>First Aid Kit</li>
+                                <li>2-Person Tent (Value: $199)</li>
+                                <li>2 Sleeping Bags (Value: $120)</li>
+                                <li>Portable Stove (Value: $89)</li>
+                                <li>Basic Cookware Set (Value: $45)</li>
+                                <li>2 LED Flashlights (Value: $30)</li>
+                                <li>First Aid Kit (Value: $36)</li>
                             </ul>
                             <button class="btn" style="width: 100%;" data-add-to-cart data-name="Explorer Starter Package" data-price="299">Add to Cart</button>
                         </div>
@@ -1169,17 +1775,17 @@
                         <div class="package-body">
                             <div class="package-price">
                                 <div class="package-amount"><sup>$</sup>699</div>
-                                <div class="package-savings">Save $200</div>
+                                <div class="package-savings">Save $200 vs. individual</div>
                             </div>
                             <ul class="package-features">
-                                <li>4-Person Premium Tent</li>
-                                <li>4 All-Season Sleeping Bags</li>
-                                <li>Professional Stove System</li>
-                                <li>Complete Cookware Set</li>
-                                <li>Portable Table & 4 Chairs</li>
-                                <li>Solar Power Bank & Lantern</li>
-                                <li>Water Purification System</li>
-                                <li>Comprehensive First Aid Kit</li>
+                                <li>4-Person Premium Tent (Value: $299)</li>
+                                <li>4 All-Season Sleeping Bags (Value: $240)</li>
+                                <li>Professional Stove System (Value: $129)</li>
+                                <li>Complete Cookware Set (Value: $89)</li>
+                                <li>Portable Table & 4 Chairs (Value: $189)</li>
+                                <li>Solar Power Bank & Lantern (Value: $89)</li>
+                                <li>Water Purification System (Value: $69)</li>
+                                <li>Comprehensive First Aid Kit (Value: $95)</li>
                             </ul>
                             <button class="btn" style="width: 100%;" data-add-to-cart data-name="Adventure Pro Package" data-price="699">Add to Cart</button>
                         </div>
@@ -1193,18 +1799,18 @@
                         <div class="package-body">
                             <div class="package-price">
                                 <div class="package-amount"><sup>$</sup>1299</div>
-                                <div class="package-savings">Save $400</div>
+                                <div class="package-savings">Save $400 vs. individual</div>
                             </div>
                             <ul class="package-features">
-                                <li>6-Person Weather Master Tent</li>
-                                <li>6 Extreme Weather Sleeping Bags</li>
-                                <li>Dual Burner Stove System</li>
-                                <li>Professional Cookware Set</li>
-                                <li>Deluxe Table & 6 Chairs</li>
-                                <li>Complete Power Station</li>
-                                <li>Advanced Water Filtration</li>
-                                <li>GPS Navigation System</li>
-                                <li>Professional Medical Kit</li>
+                                <li>6-Person Weather Master Tent (Value: $499)</li>
+                                <li>6 Extreme Weather Sleeping Bags (Value: $450)</li>
+                                <li>Dual Burner Stove System (Value: $189)</li>
+                                <li>Professional Cookware Set (Value: $149)</li>
+                                <li>Deluxe Table & 6 Chairs (Value: $299)</li>
+                                <li>Complete Power Station (Value: $249)</li>
+                                <li>Advanced Water Filtration (Value: $119)</li>
+                                <li>GPS Navigation System (Value: $399)</li>
+                                <li>Professional Medical Kit (Value: $146)</li>
                             </ul>
                             <button class="btn" style="width: 100%;" data-add-to-cart data-name="Expedition Elite Package" data-price="1299">Add to Cart</button>
                         </div>
@@ -1312,7 +1918,7 @@
             </div>
         </section>
 
-        <!-- Basket Page -->
+        <!-- Cart Page -->
         <section id="basket" class="page-section">
             <div class="container">
                 <div class="section-header">
@@ -1374,7 +1980,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>OutdoorPro™</h3>
-                <p style="color: rgba(255,255,255,0.7); margin-top: 12px;">Your trusted partner for outdoor adventures since 2010.</p>
+                <p style="color: rgba(255,255,255,0.7); margin-top: 12px;">Your trusted partner for outdoor adventures since 2010. Professional-grade equipment tested in the world's toughest environments.</p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
@@ -1405,19 +2011,46 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 OutdoorPro™. All rights reserved. | Privacy Policy | Terms of Service</p>
+            <p>&copy; 2023 OutdoorPro™. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
         </div>
     </footer>
 
     <script>
-        // Navigation
+        // Enhanced Navigation and Mobile Menu
         const navLinks = document.querySelectorAll('.nav-link');
         const sections = document.querySelectorAll('.page-section');
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navbar = document.getElementById('navbar');
         
+        // Mobile menu toggle
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Navigation
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const targetPage = e.target.dataset.page || e.target.parentElement.dataset.page;
+                
+                if (targetPage === 'basket') {
+                    // Handle cart toggle for mobile
+                    if (window.innerWidth <= 768) {
+                        toggleCartPreview();
+                        return;
+                    }
+                }
                 
                 sections.forEach(section => section.classList.remove('active'));
                 navLinks.forEach(navLink => navLink.classList.remove('active'));
@@ -1425,16 +2058,30 @@
                 document.getElementById(targetPage).classList.add('active');
                 e.target.closest('.nav-link').classList.add('active');
                 
+                // Close mobile menu
+                mobileToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                
+                // Show/hide filters for equipment page
+                const filterBar = document.getElementById('filterBar');
+                if (targetPage === 'equipment') {
+                    document.getElementById('filterToggle').style.display = 'inline-block';
+                } else {
+                    filterBar.classList.remove('active');
+                    document.getElementById('filterToggle').style.display = 'none';
+                }
+                
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
 
-        // Cart Management
+        // Enhanced Cart Management
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         
         function updateCartCount() {
             const count = cart.reduce((total, item) => total + item.quantity, 0);
             document.getElementById('basket-count').textContent = count;
+            updateCartPreview();
         }
         
         function addToCart(name, price) {
@@ -1452,13 +2099,7 @@
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartCount();
             updateCartDisplay();
-            
-            // Show success message
-            const message = document.createElement('div');
-            message.style.cssText = 'position: fixed; top: 100px; right: 20px; background: var(--success); color: white; padding: 16px 24px; border-radius: 8px; box-shadow: var(--shadow-lg); z-index: 9999; animation: slideIn 0.3s ease;';
-            message.textContent = `✓ ${name} added to cart`;
-            document.body.appendChild(message);
-            setTimeout(() => message.remove(), 3000);
+            showToast(`✓ ${name} added to cart`, 'success');
         }
         
         function getProductIcon(name) {
@@ -1468,14 +2109,22 @@
             if (name.includes('Chair') || name.includes('Recliner')) return '🪑';
             if (name.includes('Table')) return '🏕️';
             if (name.includes('Package')) return '📦';
+            if (name.includes('Lantern') || name.includes('Power')) return '💡';
+            if (name.includes('Water') || name.includes('Purifier')) return '💧';
+            if (name.includes('GPS') || name.includes('Navigator')) return '🧭';
+            if (name.includes('First Aid') || name.includes('Medical')) return '🏥';
+            if (name.includes('Hammock')) return '🛋️';
+            if (name.includes('Cot') || name.includes('Sleeping')) return '🛏️';
             return '🏔️';
         }
         
         function removeFromCart(index) {
+            const item = cart[index];
             cart.splice(index, 1);
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartCount();
             updateCartDisplay();
+            showToast(`${item.name} removed from cart`, 'error');
         }
         
         function updateQuantity(index, delta) {
@@ -1488,6 +2137,76 @@
                 updateCartDisplay();
             }
         }
+        
+        // Cart Preview
+        function updateCartPreview() {
+            const cartPreviewItems = document.getElementById('cartPreviewItems');
+            
+            if (cart.length === 0) {
+                cartPreviewItems.innerHTML = `
+                    <div class="empty-state" style="padding: 40px 20px;">
+                        <div class="empty-state-icon">🛒</div>
+                        <div class="empty-state-title">Cart is empty</div>
+                        <p>Start shopping to add items!</p>
+                    </div>
+                `;
+            } else {
+                let html = '';
+                let total = 0;
+                
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    html += `
+                        <div class="cart-preview-item">
+                            <div class="cart-item-image">${item.icon}</div>
+                            <div class="cart-item-details">
+                                <div class="cart-item-name">${item.name}</div>
+                                <div class="cart-item-price">$${item.price.toFixed(2)} x ${item.quantity} = $${itemTotal.toFixed(2)}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                html += `
+                    <div style="padding: 20px; border-top: 1px solid var(--border); margin-top: 20px;">
+                        <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 1.1rem; margin-bottom: 16px;">
+                            <span>Total: $${total.toFixed(2)}</span>
+                        </div>
+                        <button class="btn" style="width: 100%;" onclick="goToCart()">View Full Cart</button>
+                    </div>
+                `;
+                
+                cartPreviewItems.innerHTML = html;
+            }
+        }
+        
+        function toggleCartPreview() {
+            const cartPreview = document.getElementById('cartPreview');
+            cartPreview.classList.toggle('active');
+        }
+        
+        function goToCart() {
+            // Navigate to cart page
+            sections.forEach(section => section.classList.remove('active'));
+            navLinks.forEach(navLink => navLink.classList.remove('active'));
+            
+            document.getElementById('basket').classList.add('active');
+            document.querySelector('[data-page="basket"]').classList.add('active');
+            
+            // Close cart preview
+            document.getElementById('cartPreview').classList.remove('active');
+        }
+        
+        // Cart toggle events
+        document.getElementById('cartToggle').addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleCartPreview();
+        });
+        
+        document.getElementById('closeCart').addEventListener('click', () => {
+            document.getElementById('cartPreview').classList.remove('active');
+        });
         
         function updateCartDisplay() {
             const tbody = document.getElementById('basketItems');
@@ -1562,14 +2281,106 @@
             }
         }
         
+        // Toast notifications
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+        
         // Add to Cart Buttons
-        document.querySelectorAll('[data-add-to-cart]').forEach(button => {
-            button.addEventListener('click', (e) => {
+        document.addEventListener('click', (e) => {
+            if (e.target.hasAttribute('data-add-to-cart')) {
                 const name = e.target.dataset.name;
                 const price = e.target.dataset.price;
                 addToCart(name, price);
+            }
+        });
+        
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const productCards = document.querySelectorAll('.product-card');
+            
+            productCards.forEach(card => {
+                const productName = card.querySelector('.product-name').textContent.toLowerCase();
+                const productDescription = card.querySelector('.product-description').textContent.toLowerCase();
+                const productCategory = card.querySelector('.product-category').textContent.toLowerCase();
+                
+                if (productName.includes(searchTerm) || 
+                    productDescription.includes(searchTerm) || 
+                    productCategory.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
             });
         });
+        
+        // Filter functionality
+        function toggleFilters() {
+            const filterBar = document.getElementById('filterBar');
+            const filterToggle = document.getElementById('filterToggle');
+            
+            filterBar.classList.toggle('active');
+            filterToggle.textContent = filterBar.classList.contains('active') ? 'Hide Filters' : 'Show Filters';
+        }
+        
+        function clearFilters() {
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('priceFilter').value = '';
+            document.getElementById('ratingFilter').value = '';
+            applyFilters();
+        }
+        
+        function applyFilters() {
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const priceFilter = document.getElementById('priceFilter').value;
+            const ratingFilter = document.getElementById('ratingFilter').value;
+            const productCards = document.querySelectorAll('#equipmentGrid .product-card');
+            
+            productCards.forEach(card => {
+                let show = true;
+                
+                // Category filter
+                if (categoryFilter && card.dataset.category !== categoryFilter) {
+                    show = false;
+                }
+                
+                // Price filter
+                if (priceFilter && show) {
+                    const price = parseFloat(card.dataset.price);
+                    const [min, max] = priceFilter.includes('+') 
+                        ? [parseFloat(priceFilter.replace('+', '')), Infinity]
+                        : priceFilter.split('-').map(p => parseFloat(p));
+                    
+                    if (price < min || price > max) {
+                        show = false;
+                    }
+                }
+                
+                // Rating filter
+                if (ratingFilter && show) {
+                    const rating = parseFloat(card.dataset.rating);
+                    if (rating < parseFloat(ratingFilter)) {
+                        show = false;
+                    }
+                }
+                
+                card.style.display = show ? 'block' : 'none';
+            });
+        }
+        
+        // Add event listeners for filters
+        document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+        document.getElementById('priceFilter').addEventListener('change', applyFilters);
+        document.getElementById('ratingFilter').addEventListener('change', applyFilters);
         
         // Review Form
         document.getElementById('reviewForm').addEventListener('submit', (e) => {
@@ -1602,21 +2413,8 @@
             
             document.getElementById('reviewsList').insertAdjacentHTML('afterbegin', reviewHtml);
             document.getElementById('reviewForm').reset();
-            
-            // Success message
-            alert('Thank you for your review! It has been submitted successfully.');
+            showToast('Thank you for your review!', 'success');
         });
-        
-        // Checkout
-        document.getElementById('checkoutBtn')?.addEventListener('click', () => {
-            if (cart.length > 0) {
-                alert('Thank you for your order! This is a demo checkout. In a real application, you would be redirected to a secure payment gateway.');
-            }
-        });
-        
-        // Initialize
-        updateCartCount();
-        updateCartDisplay();
         
         // Rating stars interaction
         document.querySelectorAll('.rating-input label').forEach((star, index, stars) => {
@@ -1629,7 +2427,84 @@
                     }
                 });
             });
+            
+            star.addEventListener('mouseenter', () => {
+                stars.forEach((s, i) => {
+                    if (i >= stars.length - index - 1) {
+                        s.style.color = '#ffc107';
+                    } else {
+                        s.style.color = '#ddd';
+                    }
+                });
+            });
         });
+        
+        // Reset stars on mouse leave
+        document.querySelector('.rating-input').addEventListener('mouseleave', () => {
+            const checkedRating = document.querySelector('input[name="rating"]:checked');
+            const checkedValue = checkedRating ? parseInt(checkedRating.value) : 0;
+            const stars = document.querySelectorAll('.rating-input label');
+            
+            stars.forEach((star, index) => {
+                if (index >= stars.length - checkedValue) {
+                    star.style.color = '#ffc107';
+                } else {
+                    star.style.color = '#ddd';
+                }
+            });
+        });
+        
+        // Checkout functionality
+        document.getElementById('checkoutBtn')?.addEventListener('click', () => {
+            if (cart.length > 0) {
+                showToast('Redirecting to secure checkout...', 'success');
+                setTimeout(() => {
+                    alert('Thank you for your order! This is a demo checkout. In a real application, you would be redirected to a secure payment gateway.');
+                }, 1000);
+            }
+        });
+        
+        // Close cart preview when clicking outside
+        document.addEventListener('click', (e) => {
+            const cartPreview = document.getElementById('cartPreview');
+            const cartToggle = document.getElementById('cartToggle');
+            
+            if (!cartPreview.contains(e.target) && !cartToggle.contains(e.target)) {
+                cartPreview.classList.remove('active');
+            }
+        });
+        
+        // Handle page navigation buttons in content
+        document.addEventListener('click', (e) => {
+            if (e.target.hasAttribute('data-page') && !e.target.classList.contains('nav-link')) {
+                e.preventDefault();
+                const targetPage = e.target.dataset.page;
+                
+                sections.forEach(section => section.classList.remove('active'));
+                navLinks.forEach(navLink => navLink.classList.remove('active'));
+                
+                document.getElementById(targetPage).classList.add('active');
+                document.querySelector(`[data-page="${targetPage}"]`).classList.add('active');
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+            updateCartDisplay();
+            updateCartPreview();
+            
+            // Set initial rating stars
+            const ratingStars = document.querySelectorAll('.rating-input label');
+            ratingStars.forEach(star => star.classList.add('active'));
+        });
+        
+        // Initialize immediately
+        updateCartCount();
+        updateCartDisplay();
+        updateCartPreview();
     </script>
 </body>
 </html>
